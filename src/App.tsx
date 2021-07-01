@@ -1,4 +1,5 @@
 import React from 'react';
+import { RecoilRoot } from 'recoil';
 import styled, { createGlobalStyle } from 'styled-components';
 import { TweetBox } from './components/TweetBox';
 import { Feed } from './components/Feed';
@@ -24,17 +25,19 @@ const PageContainer = styled.div``;
 const InnerContainer = styled.div`
   padding: 64px 16px;
   margin: 0 auto;
-  max-width: 720px;
+  max-width: 480px;
 `;
 
 export const App = () => {
   return (
-    <PageContainer>
+    <RecoilRoot>
+      <PageContainer>
       <GlobalStyle />
       <InnerContainer>
         <TweetBox />
         <Feed />
       </InnerContainer>
     </PageContainer>
+    </RecoilRoot>
   );
 }

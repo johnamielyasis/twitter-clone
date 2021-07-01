@@ -1,25 +1,17 @@
 import React from 'react';
+import { useRecoilValue } from 'recoil';
 import { RoundedBox } from './RoundedBox';
-import { Tweet, TweetProps } from './Tweet';
-
-const tweets: TweetProps[] = [
-  {
-    fullname: 'Gerrymi Bernardo',
-    username: 'gerrymi',
-    avatar: 'https://i.pravatar.cc/300',
-    body: 'So bored. 🙃'
-  },
-  {
-    fullname: 'Gerrymi Bernardo',
-    username: 'gerrymi',
-    avatar: 'https://i.pravatar.cc/300',
-  },
-];
+import { Flex } from './Flex';
+import { Tweet } from './Tweet';
+import { tweetsAtom } from '../atoms';
 
 export const Feed = () => {
+  const tweets = useRecoilValue(tweetsAtom);
   return (
     <RoundedBox>
-      {tweets.map(t => <Tweet {...t}/>)}
+      <Flex flexDirection="column-reverse">
+        {tweets.map(t => <Tweet {...t}/>)}
+      </Flex>
     </RoundedBox>
   )
 }
